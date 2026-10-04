@@ -1,13 +1,11 @@
 # TODO: Add support for other compilers
-add_library(pans_warnings INTERFACE)
+add_library(pans_options INTERFACE)
 
-target_compile_options(pans_warnings INTERFACE
+target_compile_options(pans_options INTERFACE
 	-Wall
 	-Wextra
 	-Wpedantic
 )
-
-add_library(pans_options INTERFACE)
 
 option(PANS_ENABLE_COVERAGE "Enable code coverage" OFF)
 mark_as_advanced(PANS_ENABLE_COVERAGE)
@@ -20,3 +18,5 @@ if(PANS_ENABLE_COVERAGE)
 		$<$<CONFIG:Debug>:--coverage>
 	)
 endif()
+
+# TODO: Add sanitizer options

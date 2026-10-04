@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.24)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -6,6 +6,7 @@ project(pans VERSION 0.0.1 LANGUAGES CXX C)
 
 include(GNUInstallDirs)
 
+# TODO: Use target_compile_features() instead of CMAKE_CXX_STANDARD
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -28,7 +29,7 @@ if(PANS_BUILD_EXAMPLES)
 endif()
 
 if(PANS_BUILD_TESTS)
-	enable_testing()
+	include(CTest)
 	add_subdirectory(tests)
 endif()
 

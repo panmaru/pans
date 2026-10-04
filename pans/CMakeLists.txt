@@ -3,7 +3,7 @@ set(PANS_SOURCES
 )
 
 set(PANS_HEADERS
-	# ...
+	include/pans/macros.h
 )
 
 add_library(pans STATIC ${PANS_SOURCES})
@@ -22,11 +22,8 @@ target_include_directories(pans
 		${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(pans
-	PUBLIC
-		pans_options
-	PRIVATE
-		pans_warnings
+target_link_libraries(pans PRIVATE
+	pans_options
 )
 
 # TODO: Add support for other compilers
