@@ -10,16 +10,16 @@
 
 #define PANS_CHECK_STMT(condition, stmt)                                       \
     if (!(condition)) [[unlikely]] {                                           \
-        std::cerr << __FILE__ << ":" << __LINE__ << ": Condition failed: '"    \
-                  << #condition << "'\n";                                      \
+        std::println(std::cerr, "{}:{}: Condition failed: '{}'", __FILE__,     \
+                     __LINE__, #condition);                                    \
         stmt;                                                                  \
     } else                                                                     \
         (void(0))
 
 #define PANS_CHECK_STMT_MSG(condition, stmt, msg)                              \
     if (!(condition)) [[unlikely]] {                                           \
-        std::cerr << __FILE__ << ":" << __LINE__ << ": Condition failed: '"    \
-                  << #condition << "' (" << msg << ")\n";                      \
+        std::println(std::cerr, "{}:{}: Condition failed: '{}' ({})",          \
+                     __FILE__, __LINE__, #condition, msg);                     \
         stmt;                                                                  \
     } else                                                                     \
         (void(0))
